@@ -1,3 +1,14 @@
+/* Sidebar Tweaking */
+#peopledetails dt {
+    width: 75px!important;
+    display: inline-block;
+}
+#peopledetails dd {
+    calc(100% - 75px)!important;
+    display: inline-block;
+}
+
+
 /********************/
 /* Sidebar Clean Up */
 /********************/
