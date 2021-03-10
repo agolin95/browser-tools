@@ -1,15 +1,17 @@
 $(function() {
 	setTimeout(() => {  
 		$('#show-more-links-link').click()
-	}, 5000);
+	}, 1000);
 	
-    var firstUrl = window.location.href
-	document.addEventListener('click', function() {
-		var newUrl = window.location.href;
-		if (firstUrl != newUrl) {
-			setTimeout(() => {  
-				$('#show-more-links-link').click()
-			}, 1000);
+	document.addEventListener('click', function(e) {
+		elem = e.target
+		for (i = 0;i < 10; i++) {
+			if ($(elem).hasClass("ghx-issue")) {
+				setTimeout(() => {  
+					$('#show-more-links-link').click()
+				}, 1000);
+			}
+			elem = elem.parentNode
 		}
 	});
 });
