@@ -1,0 +1,38 @@
+/* Compact Code Review View */
+.timeline-comment-header-text{
+	padding: 0px;
+}
+.timeline-comment-action {
+	padding: 0px;
+	padding-right: 5px;
+	padding-bottom: 2px;
+}
+.comment-body {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.TimelineItem {
+	padding: 2px;
+}
+.js-minimizable-comment-group {
+	padding: 2px;
+}
+.review-comment {
+    padding: 2px 2px;
+}
+.review-comment:last-child {
+    padding-bottom: 2px;
+}
+.review-comment:first-child {
+    padding-top: 2px;
+}
+.m-3 {
+    margin: 2px !important;
+	padding: 2px;
+}
+.file-header {
+    padding: 2px 2px;
+}
+.diff-table > tbody > tr[data-position="0"] {
+	display: none;
+}
