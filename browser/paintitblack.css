@@ -1,0 +1,26 @@
+.darkestTarget.important {
+	background-color: #111!important;
+	color: white!important;
+}
+
+.darkTarget.important {
+	background-color: #222!important;
+	color: white!important;
+}
+
+.middleTarget.important {
+	background-color: #333!important;
+	color: white!important;
+}
+
+.lightTarget.important {
+	background-color: #222!important;
+	color: white!important;
+}
+
+.lightestTarget.important {
+	background-color: #111!important;
+	color: white!important;
+}
+
+
