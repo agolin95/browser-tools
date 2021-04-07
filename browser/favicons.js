@@ -20,9 +20,9 @@ switch (lang) {
     case "NODE": icon += "node.png"; break;
     case "JAVA": icon += "java.png"; break;
     case "SWIFT": icon += "swift.png"; break;
-    case "RUST": icon = "rust.png"; break;
-    case "KAFKA": icon = "kafka.png"; break;
-    case "DRIVERS": icon = "dbx.png"; break;
+    case "RUST": icon += "rust.png"; break;
+    case "KAFKA": icon += "kafka.png"; break;
+    case "DRIVERS": icon += "dbx.png"; break;
 }
 
 window.addEventListener('load', function() {
