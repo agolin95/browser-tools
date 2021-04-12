@@ -1,50 +1,29 @@
 $(function() {
     console.log( "~~~~~~~~~~~~DEBUG~~~~~~~~~~~~" );
-    console.log( "~~~~~~~~~~~~DEBUG~~~~~~~~~~~~" );
-
-	// Higher means more colors will be made grayscale
-	TINTTOL = 50
-	
-	darkifyBackground()
+    
+	darkify(document)
 	// Rerun to catch updates to DOM
 	setInterval(() => {  
-		darkifyBackground()
+		darkify(document)
 	}, 1000);
 });
 
-function darkifyBackground() {
-	document.querySelectorAll('*').forEach(function(node) {
-	    bgColor = getComputed(node, 'background-color')
-	    switch(whatColor(bgColor)) {
-	    	case "invalid":
-				break;
-	    	case "alpha":
-				break;
-			case "color":
-				node.classList.add("colorTarget");
-				node.classList.add("important");
-				break;
-			case "darkest":
-				node.classList.add("darkestTarget");
-				node.classList.add("important");
-				break;
-	    	case "dark":
-	    		node.classList.add("darkTarget");
-				node.classList.add("important");
-				break;
-			case "middle":
-	    		node.classList.add("middleTarget");
-				node.classList.add("important");
-				break;
-			case "light":
-	    		node.classList.add("lightTarget");
-				node.classList.add("important");
-				break;
-			case "lightest":
-	    		node.classList.add("lightestTarget");
-				node.classList.add("important");
-				break;
-	    }
+function darkify(doc) {
+	doc.querySelectorAll('*').forEach(function(node) {
+	    darkBackground(node);
+	    darkText(node)
+		
+		
+		
+		if (node.nodeName == "IFRAME") {
+			var iframeDoc = (node.contentWindow || node.contentDocument);
+		}
+		
+		if (node instanceof SVGElement) {
+			console.log("ay");
+			node.style.fill = "white";
+		}
+		
 	});
 }
 
@@ -52,41 +31,41 @@ function getComputed(elem, property) {
 	return window.getComputedStyle(elem, null).getPropertyValue(property)
 }
 
-function whatColor(colorString) {
-	if (isRGBA(colorString)) {
-		return "alpha"
-	} else if (isRGB(colorString)) {
-		r = getChannel(colorString, "red");
-		g = getChannel(colorString, "green");
-		b = getChannel(colorString, "blue");
-		// Gray Range
-		if (r <= g + TINTTOL && r >= g - TINTTOL && r <= b + TINTTOL && r >= b - TINTTOL) {
-			if (r <= 50) {
-				return "darkest";
-			} else if (r <= 100) {
-				return "dark";
-			} else if (r <= 150) {
-				return "middle";
-			} else if (r <= 200) {
-				return "light";
-			} else if (r <= 255) {
-				return "lightest";
-			}
-		} else {
-			return "color";
-		}	
-	} else {
-		return "invalid"
+function darkBackground(node) {
+    var bgColor = getComputed(node, 'background-color')
+	rgb = isRGB(bgColor) ? getChannels(bgColor) : [0,0,100];
+	hsl = RGBtoHSL(rgb);
+	// If bright, make it dark by inverting
+	if (hsl[2] > 30) {
+		var offset = 10;
+		var newL = 100 - hsl[2] + offset;
+		newL = Math.min(newL, 30);
 	}
+	// If not very colorful, make it grayscale
+	if (hsl[1] < 20) {
+		var newS = 0;
+	}
+	node.style.background = `hsl(${hsl[0]},${newS}%,${newL}%)`;
 }
 
-function isRGBA(colorString) {
-	if (colorString.substring(0,4) == "rgba") {
-		return true
-	} else {
-		return false
+function darkText(node) {
+	var textColor = getComputed(node, 'color')
+	rgb = isRGB(textColor) ? getChannels(textColor) : [0,0,0];
+	hsl = RGBtoHSL(rgb);
+	// If dark, make it bright by inverting
+	if (hsl[2] < 70) {
+		var offset = 10;
+		var newL = 100 - hsl[2];
+		newL = Math.max(newL, 70);
 	}
+	// If colorful text, tone it down
+	if (hsl[1] > 50) {
+		var newS = hsl[1] - 30;
+		newS = Math.min(newS, 50);
+	}
+	node.style.color = `hsl(${hsl[0]},${newS}%,${newL}%)`;
 }
+
 
 function isRGB(colorString) {
 	if (colorString.substring(0,3) == "rgb") {
@@ -96,19 +75,58 @@ function isRGB(colorString) {
 	}
 }
 
-function getChannel(colorString, color) {
-	rgb = colorString.replace(/[^\d,]/g, '').split(',');
+function getChannels(colorString) {
+	var rgb = colorString.replace(/[^\d,]/g, '').split(',');
 	
 	rgb.forEach(function(channel, i, rgb) {
 		rgb[i] = parseInt(channel);
 	});
 	
-	switch(color) {
-		case "red":
-			return rgb[0];
-		case "green":
-			return rgb[1];
-		case "blue":
-			return rgb[2];
+	return rgb;
+}
+
+function RGBtoHSL(rgb) {
+	r = rgb[0]/255;
+	g = rgb[1]/255;
+	b = rgb[2]/255;
+	cmax = Math.max(r, g, b);
+	cmin = Math.min(r, g, b);
+	delta   = cmax - cmin;
+
+	// Calculate hue
+	// No difference
+	if (delta === 0) {
+    	h = 0;
 	}
+	// Red is max
+	else if (cmax == r) {
+    	h = ((g - b) / delta) % 6;
+	}
+	// Green is max
+	else if (cmax == g) {
+    	h = (b - r) / delta + 2;
+	}
+	// Blue is max
+	else {
+    	h = (r - g) / delta + 4;
+	}
+  
+	h = Math.round(h * 60);
+    
+	// Make negative hues positive behind 360°
+	if (h < 0) {
+		h += 360;
+	}
+	
+	// Calculate lightness
+	l = (cmax + cmin) / 2;
+
+	// Calculate saturation
+	s = delta === 0 ? 0 : delta / (1 - Math.abs(2 * l - 1));
+    
+	// Multiply l and s by 100
+	s = +(s * 100).toFixed(1);
+	l = +(l * 100).toFixed(1);
+	
+	return [h,s,l];
 }
