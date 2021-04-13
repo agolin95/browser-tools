@@ -2,10 +2,9 @@ var url = window.location.href;
 var slash = url.lastIndexOf('/');
 var dash = url.lastIndexOf('-');
 var lang = url.substring(slash + 1, dash);
-var icon = "https://raw.githubusercontent.com/agolin95/browser-tools/main/browser/icons/";
+var icon = "https://raw.githubusercontent.com/agolin95/browser-tools/main/icons/";
 
 switch (lang) {
-    //using icons from https://konpa.github.io/devicon/
     case "RUBY": icon += "ruby.png"; break;
     case "CDRIVER": icon += "c.png"; break;
     case "CXX": icon = "cxx.png"; break;

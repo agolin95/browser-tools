@@ -4,7 +4,7 @@
     display: inline-block;
 }
 #peopledetails dd {
-    calc(100% - 75px)!important;
+    width: calc(100% - 75px)!important;
     display: inline-block;
 }
 
