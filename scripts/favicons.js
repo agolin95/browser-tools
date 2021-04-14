@@ -7,15 +7,15 @@ var icon = "https://raw.githubusercontent.com/agolin95/browser-tools/main/icons/
 switch (lang) {
     case "RUBY": icon += "ruby.png"; break;
     case "CDRIVER": icon += "c.png"; break;
-    case "CXX": icon = "cxx.png"; break;
+    case "CXX": icon += "cxx.png"; break;
     case "MONGOCRYPT": icon = "c.png"; break;
-    case "PYTHON": icon = "python.png"; break;
+    case "PYTHON": icon += "python.png"; break;
     case "PYMODM": icon += "python.png"; break;
     case "MOTOR": icon += "python.png"; break;
     case "PHPLIB": icon += "php.png"; break;
     case "PHPC": icon += "php.png"; break;
-    case "GODRIVER": icon = "go.png"; break;
-    case "CSHARP": icon = "csharp.png"; break;
+    case "GODRIVER": icon += "go.png"; break;
+    case "CSHARP": icon += "csharp.png"; break;
     case "NODE": icon += "node.png"; break;
     case "JAVA": icon += "java.png"; break;
     case "SWIFT": icon += "swift.png"; break;
@@ -30,4 +30,5 @@ window.addEventListener('load', function() {
     clone.href = icon;
     favicon.parentNode.removeChild(favicon);
     document.head.appendChild(clone);
+    console.log("~~~Favicon Script Done~~~");
 }, false);
