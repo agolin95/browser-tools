@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira Backlog & Board UX Enhancements
 // @namespace    https://alexandergolin.com/
-// @version      0.1
+// @version      0.2
 // @description  UX enhancements for MongoDB's Jira backlog and board views.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/*
@@ -141,7 +141,7 @@ function addCSS() {
     }
 
     .extra-field-servercompat {
-        background: #00684A;
+        background: #fc03c2;
         color: white;
     }
 
