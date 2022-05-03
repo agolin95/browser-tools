@@ -132,14 +132,21 @@ function addCSS() {
         max-width: 20em;
     }
 
+    .ghx-issue-compact .ghx-plan-extra-fields.ghx-plan-extra-fields.ghx-row {
+        margin-left: 62px;
+    }
+
+    .ghx-statistic-badge {
+        display: none;
+    }
 
     .ghx-extra-field  {
         background: #eee;
-        margin-right: 10px;
-        padding-right: 5px;
-        padding-left: 5px;
-        border-radius: 5px;
-        min-width: 0px;
+        margin-right: 10px!important;
+        padding-right: 5px!important;
+        padding-left: 5px!important;
+        border-radius: 5px!important;
+        min-width: 0px!important;
     }
 
     .extra-field-servercompat {
