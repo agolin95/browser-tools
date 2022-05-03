@@ -21,8 +21,6 @@
         cleanUpBacklog();
         cleanUpBoard();
     }, 500);
-
-
 })();
 
 function cleanUpBacklog() {
