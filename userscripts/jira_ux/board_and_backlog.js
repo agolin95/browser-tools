@@ -25,36 +25,28 @@
 
 function cleanUpBacklog() {
     $(".ghx-plan-extra-fields").each(function () {
-        let fields = $(this);
-        let emptyFields = true;
-        fields.find(".ghx-extra-field").each(function () {
-            let field = $(this);
-            if (field.text() != "None") {
-                emptyFields = false;
-                field.addClass(getFieldNameAsClass(field));
-            } else {
-                field.hide();
-            }
-        })
-        if (emptyFields) fields.hide();
+        styleFields($(this));
     });
 }
 
 function cleanUpBoard() {
     $(".ghx-extra-fields").each(function () {
-        let fields = $(this);
-        let emptyFields = true;
-        fields.find(".ghx-extra-field").each(function () {
-            let field = $(this);
-            if (field.text() != "None") {
-                emptyFields = false;
-                field.addClass(getFieldNameAsClass(field));
-            } else {
-                field.hide();
-            }
-        })
-        if (emptyFields) fields.hide();
+       styleFields($(this));
     });
+}
+
+function styleFields(fields) {
+    let emptyFields = true;
+    fields.find(".ghx-extra-field").each(function () {
+        let field = $(this);
+        if (field.text() != "None") {
+            emptyFields = false;
+            field.addClass(getFieldNameAsClass(field));
+        } else {
+            field.hide();
+        }
+    })
+    if (emptyFields) fields.hide();
 }
 
 function getFieldNameAsClass(extraField) {
@@ -148,7 +140,7 @@ function addCSS() {
     }
 
     .extra-field-servercompat {
-        background: #fc03c2;
+        background: #00684a;
         color: white;
     }
 
