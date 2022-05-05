@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Jira Backlog & Board UX Enhancements
 // @namespace    https://alexandergolin.com/
-// @version      0.4
+// @version      0.5
 // @description  UX enhancements for MongoDB's Jira backlog and board views.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/secure/RapidBoard.jspa*
 // @icon         https://alexandergolin.com/img/logo.png
 // @grant        none
-// @require      http://code.jquery.com/jquery-3.x-git.min.js
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
 // ==/UserScript==
@@ -15,11 +14,25 @@
 
 (function () {
     'use strict';
+    var onoff = "on"
+    $("#ghx-modes-tools").prepend(`
+	<div id="toggle-extra-fields" class="custom-button aui-button">
+		<p>Toggle Extra Fields</p>
+	</div>
+	`)
+    $("#toggle-extra-fields").click(function () {
+        if (onoff == "on"){
+            onoff = "off";
+        }
+        else if (onoff == "off") {
+            onoff = "on";
+        }
+    });
     addCSS();
-    toggleExtraFields();
     setInterval(function () {
         cleanUpBacklog();
         cleanUpBoard();
+        toggleFields(onoff);
     }, 500);
 })();
 
@@ -55,21 +68,24 @@ function getFieldNameAsClass(extraField) {
     return "extra-field-" + fieldName;
 }
 
-function toggleExtraFields() {
-    $("#ghx-modes-tools").prepend(`
-	<div id="toggle-extra-fields" class="custom-button aui-button">
-		<p>Toggle Extra Fields</p>
-	</div>
-	`)
-    $("#toggle-extra-fields").click(function () {
+function toggleFields(onoff) {
+    if (onoff == "on") {
         $(".ghx-plan-extra-fields").each(function () {
-            $(this).toggle();
+            $(this).show();
         })
         $(".ghx-extra-fields").each(function () {
-            $(this).toggle();
+            $(this).show();
         })
         cleanUpBacklog();
-    });
+    }
+    else if (onoff == "off") {
+        $(".ghx-plan-extra-fields").each(function () {
+            $(this).hide();
+        })
+        $(".ghx-extra-fields").each(function () {
+            $(this).hide();
+        })
+    }
 }
 
 function addCSS() {
@@ -81,37 +97,9 @@ function addCSS() {
         width: 5px;
     }
 
-    .saved-search-selector {
-        padding: 10px 10px 0 10px;
-    }
-
-    .navigator-search {
-        padding: 10px 10px 10px 10px;
-        margin-top: 0px;
-    }
-
-    .ajs-layer.box-shadow {
-        width: 500px!important;
-    }
-
     .custom-button {
         background: #111;
         color: white;
-    }
-
-    .collapsed-epic {
-        border: solid purple 2px;
-        background: #f1c7fc;
-        padding: 5px;
-        text-align: center;
-        cursor: pointer;
-        margin-bottom: 3px;
-        border-radius: 2px;
-        box-shadow: 0 0 1px 0 rgba(9,30,66,0.31),0 2px 4px -1px rgba(9,30,66,0.25);
-    }
-
-    .collapsed-epic div {
-        margin-left: 10px;
     }
 
     .ghx-extra-field-seperator {
@@ -162,6 +150,7 @@ function addCSS() {
         font-weight: 600;
     }
     `
+    
     head.appendChild(style);
     style.type = 'text/css';
     if (style.styleSheet) {
@@ -170,5 +159,4 @@ function addCSS() {
     } else {
         style.appendChild(document.createTextNode(css));
     }
-
 }
