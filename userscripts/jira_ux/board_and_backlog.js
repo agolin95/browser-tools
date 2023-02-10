@@ -9,12 +9,14 @@
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
+// @require https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js 
 // ==/UserScript==
-/* globals jQuery, $, waitForKeyElements */
+
 
 (function () {
     'use strict';
     var onoff = "on"
+		console.log("Jira Board & Backlog Cleaner Starting Up!");
     $("#ghx-modes-tools").prepend(`
 	<div id="toggle-extra-fields" class="custom-button aui-button">
 		<p>Toggle Extra Fields</p>
@@ -57,11 +59,13 @@ function styleFields(fields) {
     let i = 0
     fields.find(".ghx-extra-field").each(function () {
         let field = $(this);
-        if (field.text() != "None") {
-            emptyFields = false;
-            field.addClass("extra-field-"+ i);
-        } else {
+      	let stripped = strip_mothra(field.text());
+      	field.text(stripped);
+        if (field.text() == "None" || field.text() == "") {
             field.addClass("extra-field-hidden");
+        } else {
+          	emptyFields = false;
+            field.addClass("extra-field-"+ i);
         }
         i += 1;
     })
@@ -172,4 +176,19 @@ function addCSS() {
     } else {
         style.appendChild(document.createTextNode(css));
     }
+}
+
+function strip_mothra(components) {
+  components = strip_substring(components, ", Mothra,");
+  components = strip_substring(components, ", Mothra");
+	components = strip_substring(components, "Mothra,");
+  components = strip_substring(components, "Mothra");
+  return components
+  
+}
+
+function strip_substring(str, substr) {
+    const result = str.replace(substr, '').replace(/\s\s+/g, '');
+    const final = result.trim();
+    return final;
 }
