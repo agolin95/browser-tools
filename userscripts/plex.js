@@ -11,7 +11,7 @@
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/plex.js
 // ==/UserScript==
 
-'use strict';'
+'use strict';
 console.log("Plex Style Cleanup Running")
 
 var styleSheet = document.createElement("style");
