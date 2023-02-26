@@ -12,7 +12,6 @@
 // ==/UserScript==
 'use strict';
 console.log("Plex Style Cleanup Running")
-
 var styles = `
 :root 
 {
