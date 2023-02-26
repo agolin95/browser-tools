@@ -95,5 +95,5 @@ function getStyles() {
     {
     background-color: var(--custom-buffer);
     }
-	`
+	`;
 }
