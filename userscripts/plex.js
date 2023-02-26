@@ -94,6 +94,5 @@ function getStyles() {
     .SeekBar-seekBarBuffer-pao2Od 
     {
     background-color: var(--custom-buffer);
-    }
-	`;
+    }`;
 }
