@@ -9,6 +9,7 @@
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/google/docs.js
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/google/docs.js
+// ==/UserScript==
 'use strict';
 console.log("Google Docs Cleanup Running")
 var styles = `
