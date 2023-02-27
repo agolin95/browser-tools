@@ -1,2 +1,3 @@
 # browser-tools
-A collection of small tools and tweaks for the various tools I use at work.
+
+A collection of tools and tweaks for my browser use cases.
