@@ -10,59 +10,51 @@
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/ticket.js
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/ticket.js
 // ==/UserScript==
+var $ = window.jQuery;
 
 (function () {
     'use strict';
-    console.log("Jira Ticket Cleanup Running")
-    var styleSheet = document.createElement("style");
-    styleSheet.innerText = getStyles();
-    document.body.appendChild(styleSheet);
+    console.log("Jira Ticket Cleanup Running");
+    addCSS();
+    toggleOffEmptyFields();
+    watchCleanup();
 })();
 
-function getStyles() {
+function toggleOffEmptyFields() {
+    toggleOffIfEmpty("#resolution-val", "li.item:nth-child(4)", "Unresolved");
+    toggleOffIfEmpty("#versions-val", "li.item:nth-child(5)", "None");
+    toggleOffIfEmpty("#fixfor-val", "li.item:nth-child(6)", "None");
+    toggleOffIfEmpty("#labels-2259688-value", "li.item:nth-child(8)", "None");
+}
+
+
+function watchCleanup() {
+    var watchText = $("#watching-toggle").html().trim()
+    if (watchText == "Stop watching this issue") {
+        $("#watching-toggle").html("Unwatch")
+    }
+    else if (watchText == "Start watching this issue") {
+        $("#watching-toggle").html("Watch")
+    }
+}
+
+
+function toggleOffIfEmpty(fieldValueSelector, fieldSelector, emptyVal) {
+    if ($(fieldValueSelector).html().trim() == emptyVal) {
+        $(fieldSelector).hide();
+    }
+}
+
+function addCSS() {
+    var styleSheet = document.createElement("style");
+    styleSheet.innerText = styles();
+    document.body.appendChild(styleSheet);
+}
+
+function styles() {
     return `
-        :root
-        {
-        --custom-highlight: red;
-        --custom-buffer: rgba(255, 0, 0, 0.3);
-        }
-
-        /* Sidebar Tweaking */
-        #peopledetails dt {
-            width: 75px!important;
-            display: inline-block;
-        }
-        #peopledetails dd {
-            width: calc(100% - 75px)!important;
-            display: inline-block;
-        }
-
-
-        /********************/
-        /* Sidebar Clean Up */
-        /********************/
         /* Assign to Me Button */
         #assign-to-me {
-            display: none;
-        }
-
-        /* Last Commenter */
-        #peopledetails>dl:nth-child(4) {
-            display: none;
-        }
-
-        /* Votes */
-        .mod-content>.item-details:nth-child(2)>dl:nth-child(1) {
-            display: none;
-        }
-
-        /* Days Since Reply */
-        #datesmodule .dates:nth-child(3) {
-            display: none;
-        }
-
-        /* Date of First Reply */
-        #datesmodule .dates:nth-child(4) {
             display: none;
         }
 
@@ -71,16 +63,13 @@ function getStyles() {
             display: none;
         }
 
-        /*************************/
-        /* Custom Field Clean Up */
-        /*************************/
-        /* Number of Replies */
-        #rowForcustomfield_10050 {
+        /*Reporter Panel*/
+        #reporter {
             display: none;
         }
 
-        /* Last Comment by Customer */
-        #rowForcustomfield_10057 {
+        /* Attachment Module*/
+        #attachmentmodule {
             display: none;
         }
     `;

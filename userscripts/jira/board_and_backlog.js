@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Jira Backlog & Board UX Enhancements
+// @name         Jira Board & Backlog Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.9
+// @version      0.10
 // @description  UX enhancements for MongoDB's Jira backlog and board views.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/secure/RapidBoard.jspa*
@@ -190,71 +190,4 @@ function strip_substring(str, substr) {
     const result = str.replace(substr, '').replace(/\s\s+/g, '');
     const final = result.trim();
     return final;
-}
-
-function getStyles() {
-    return `
-        :root
-        {
-        --custom-highlight: red;
-        --custom-buffer: rgba(255, 0, 0, 0.3);
-        }
-
-        /* Sidebar Tweaking */
-        #peopledetails dt {
-            width: 75px!important;
-            display: inline-block;
-        }
-        #peopledetails dd {
-            width: calc(100% - 75px)!important;
-            display: inline-block;
-        }
-
-
-        /********************/
-        /* Sidebar Clean Up */
-        /********************/
-        /* Assign to Me Button */
-        #assign-to-me {
-            display: none;
-        }
-
-        /* Last Commenter */
-        #peopledetails>dl:nth-child(4) {
-            display: none;
-        }
-
-        /* Votes */
-        .mod-content>.item-details:nth-child(2)>dl:nth-child(1) {
-            display: none;
-        }
-
-        /* Days Since Reply */
-        #datesmodule .dates:nth-child(3) {
-            display: none;
-        }
-
-        /* Date of First Reply */
-        #datesmodule .dates:nth-child(4) {
-            display: none;
-        }
-
-        /* Agile Panel */
-        #greenhopper-agile-issue-web-panel {
-            display: none;
-        }
-
-        /*************************/
-        /* Custom Field Clean Up */
-        /*************************/
-        /* Number of Replies */
-        #rowForcustomfield_10050 {
-            display: none;
-        }
-
-        /* Last Comment by Customer */
-        #rowForcustomfield_10057 {
-            display: none;
-        }
-    `;
 }
