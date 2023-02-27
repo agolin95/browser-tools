@@ -26,7 +26,11 @@ function addCSS() {
 
 function styles() {
     return `
-        #system-help-menu {
+        #system-help-menu,
+        #jira-header-feedback-link,
+        #rw_refined_administration_link,
+        #rlabs_insight_topmenu_link{
             display: none;
+        }
     `;
 }
