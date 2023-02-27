@@ -136,7 +136,7 @@ function styles() {
             border: solid #eee 5px;
             border-radius: 10px;
             padding-top: 20px;
-            padding-bottom: 20px;
+            padding-bottom: 25px;
             margin-top: 0px;
             margin-bottom: 20px;
         }
