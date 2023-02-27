@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira Backlog & Board UX Enhancements
 // @namespace    https://alexandergolin.com/
-// @version      0.8
+// @version      0.9
 // @description  UX enhancements for MongoDB's Jira backlog and board views.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/secure/RapidBoard.jspa*
@@ -9,9 +9,8 @@
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/board_and_backlog.js
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/board_and_backlog.js
-// @require https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js 
 // ==/UserScript==
-
+var $ = window.jQuery;
 
 (function () {
     'use strict';
@@ -200,7 +199,7 @@ function getStyles() {
         --custom-highlight: red;
         --custom-buffer: rgba(255, 0, 0, 0.3);
         }
-    
+
         /* Sidebar Tweaking */
         #peopledetails dt {
             width: 75px!important;
@@ -240,7 +239,7 @@ function getStyles() {
             display: none;
         }
 
-        /* Agile Panel */ 
+        /* Agile Panel */
         #greenhopper-agile-issue-web-panel {
             display: none;
         }
