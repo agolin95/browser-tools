@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Plex Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.2
+// @version      0.3
 // @description  Visual Tweaks for Plex
 // @author       Alexander Golin
 // @match        https://app.plex.tv/*
@@ -11,12 +11,12 @@
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/plex.js
 // ==/UserScript==
 
-(function() {
-    'use strict';
-    console.log("Plex Style Cleanup Running")
-    var styleSheet = document.createElement("style");
-    styleSheet.innerText = getStyles();
-    document.body.appendChild(styleSheet);
+(function () {
+  'use strict';
+  console.log("Plex Style Cleanup Running")
+  var styleSheet = document.createElement("style");
+  styleSheet.innerText = getStyles();
+  document.body.appendChild(styleSheet);
 })();
 
 function getStyles() {
