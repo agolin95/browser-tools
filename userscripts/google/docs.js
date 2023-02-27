@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Docs Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.2
+// @version      0.3
 // @description  Visual Tweaks for Google Docs
 // @author       Alexander Golin
 // @match        https://docs.google.com/*
@@ -11,15 +11,16 @@
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/google/docs.js
 // ==/UserScript==
 
-'use strict';
-console.log("Google Docs Cleanup Running")
-
-var styleSheet = document.createElement("style");
-styleSheet.innerText = getStyles();
-document.body.appendChild(styleSheet);
+(function () {
+    'use strict';
+    console.log("Google Docs Cleanup Running")
+    var styleSheet = document.createElement("style");
+    styleSheet.innerText = getStyles();
+    document.body.appendChild(styleSheet);
+})();
 
 function getStyles() {
-  return `
+    return `
     :root 
     {
     --custom-highlight: red;
