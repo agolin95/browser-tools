@@ -22,15 +22,20 @@ var $ = window.jQuery;
 })();
 
 function arrangeBars() {
+    // Move action buttons above ticket metadata
     $(".command-bar").insertBefore("#issue-content .aui-page-header")
 
-    $(".jira-issue-status-lozenge").insertAfter("ol.aui-nav > li:nth-child(2)");
-    $("#priority-val > img:nth-child(1)").insertAfter("ol.aui-nav > li:nth-child(2)");
-    $("#type-val > img:nth-child(1)").insertAfter("ol.aui-nav > li:nth-child(2)");
+    // Move basic required metadata to top bar
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($(".jira-issue-status-lozenge"));
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#priority-val > img:nth-child(1)"));
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#type-val > img:nth-child(1)"));
 
+    // Make Category Module and move metadata to it
     $("#viewissuesidebar").prepend("<div id='categorymodule'><ul class='property-list'></ul></div>");
     $("#categorymodule>.property-list").prepend($("li.item:nth-child(7)"));
     $("#categorymodule>.property-list").prepend($("#rowForcustomfield_10857"));
+
+    $("#activitymodule").append($("#addcomment-inner"))
 }
 
 
@@ -93,7 +98,9 @@ function styles() {
         li.item-right:nth-child(2),
         li.item:nth-child(3),
         ol.aui-nav > li:nth-child(1),
-        .aui-page-header-image{
+        .aui-page-header-image,
+        #linkingmodule_heading,
+        #activitymodule_heading{
             display: none;
         }
 
@@ -134,13 +141,13 @@ function styles() {
             width: 150px;
         }
 
-        #categorymodule, #peoplemodule, #datesmodule, #descriptionmodule {
-            border: solid #eee 5px;
-            border-radius: 10px;
+        #categorymodule, #peoplemodule, #datesmodule, #descriptionmodule, #linkingmodule, #activitymodule {
+            box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1.5px;
+            border-radius: 5px;
             padding-top: 20px;
             padding-bottom: 25px;
-            margin-top: 0px;
-            margin-bottom: 20px;
+            margin-top: 5px;
+            margin-bottom: 15px;
         }
 
     `;
