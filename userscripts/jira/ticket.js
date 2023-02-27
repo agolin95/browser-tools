@@ -112,9 +112,9 @@ function styles() {
             font-weight: 500;
         }
 
-        #descriptionmodule {
-            margin-top: 0px;
-            padding-top: 0px;
+        .mod-content {
+            margin-top: 0px!important;
+            padding-top: 0px!important;
         }
 
         #categorymodule>.property-list {
@@ -129,7 +129,16 @@ function styles() {
 
         .item-details dl > dt,
         .property-list .item .name{
-            width: 100px;
+            width: 150px;
+        }
+
+        #categorymodule, #peoplemodule, #datesmodule, #descriptionmodule {
+            border: solid #eee 5px;
+            border-radius: 10px;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-top: 0px;
+            margin-bottom: 20px;
         }
 
     `;
