@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira Backlog & Board UX Enhancements
 // @namespace    https://alexandergolin.com/
-// @version      0.6
+// @version      0.7
 // @description  UX enhancements for MongoDB's Jira backlog and board views.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/secure/RapidBoard.jspa*
