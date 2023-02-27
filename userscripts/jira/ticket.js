@@ -37,7 +37,7 @@ function arrangeBars() {
 function textCleanup() {
     var summary = $("#summary-val").html().replace(
         /\w\S*/g,
-        function (txt) {
+        function(txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
         }
     );
@@ -58,7 +58,7 @@ function toggleOffEmptyFields() {
     toggleOffIfEmpty("#resolution-val", "li.item:nth-child(4)", "Unresolved");
     toggleOffIfEmpty("#versions-val", "li.item:nth-child(5)", "None");
     toggleOffIfEmpty("#fixfor-val", "li.item:nth-child(6)", "None");
-    toggleOffIfEmpty("#labels-2259688-value", "li.item:nth-child(8)", "None");
+    toggleOffIfEmpty("#labels-2258208-value", "li.item:nth-child(8)", "None");
 }
 
 function toggleOffIfEmpty(fieldValueSelector, fieldSelector, emptyVal) {
@@ -91,7 +91,9 @@ function styles() {
         #datesmodule-label,
         #issuedetails > li:nth-child(1),
         li.item-right:nth-child(2),
-        li.item:nth-child(3){
+        li.item:nth-child(3),
+        ol.aui-nav > li:nth-child(1),
+        .aui-page-header-image{
             display: none;
         }
 
