@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Jira Ticket Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.4
+// @version      0.5
 // @description  UX enhancements for MongoDB's Jira ticket view.
 // @author       Alexander Golin
 // @match        https://jira.mongodb.org/browse/*
@@ -26,16 +26,16 @@ function arrangeBars() {
     $(".command-bar").insertBefore("#issue-content .aui-page-header")
 
     // Move basic required metadata to top bar
-    $("ol.aui-nav.aui-nav-breadcrumbs").append($(".jira-issue-status-lozenge"));
-    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#priority-val > img:nth-child(1)"));
-    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#type-val > img:nth-child(1)"));
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#priority-val"));
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#type-val"));
+    $("ol.aui-nav.aui-nav-breadcrumbs").append($("#status-val>.jira-issue-status-lozenge"));
 
     // Make Category Module and move metadata to it
     $("#viewissuesidebar").prepend("<div id='categorymodule'><ul class='property-list'></ul></div>");
     $("#categorymodule>.property-list").prepend($("li.item:nth-child(7)"));
     $("#categorymodule>.property-list").prepend($("#rowForcustomfield_10857"));
 
-    $("#activitymodule").append($("#addcomment-inner"))
+    //$("#activitymodule").append($("#addcomment-inner"))
 }
 
 
@@ -100,7 +100,11 @@ function styles() {
         ol.aui-nav > li:nth-child(1),
         .aui-page-header-image,
         #linkingmodule_heading,
-        #activitymodule_heading{
+        #activitymodule_heading,
+        #viewissue-devstatus-panel-label,
+        #branch-status-panel,
+        #commit-status-panel,
+        #pullrequest-status-panel .sub-text{
             display: none;
         }
 
@@ -141,13 +145,21 @@ function styles() {
             width: 150px;
         }
 
-        #categorymodule, #peoplemodule, #datesmodule, #descriptionmodule, #linkingmodule, #activitymodule {
+        #categorymodule, #peoplemodule, #datesmodule, #descriptionmodule, #linkingmodule, #activitymodule, #viewissue-devstatus-panel {
             box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1.5px;
             border-radius: 5px;
             padding-top: 20px;
             padding-bottom: 25px;
             margin-top: 5px;
             margin-bottom: 15px;
+        }
+
+        .aui-nav.aui-nav-breadcrumbs>img {
+            margin-right: 10px;
+        }
+
+        .aui-page-header-inner {
+            display: block;
         }
 
     `;
