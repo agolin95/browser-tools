@@ -11,22 +11,23 @@
 // @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/plex.js
 // ==/UserScript==
 
-'use strict';
-console.log("Plex Style Cleanup Running")
-
-var styleSheet = document.createElement("style");
-styleSheet.innerText = getStyles();
-document.body.appendChild(styleSheet);
+(function() {
+    'use strict';
+    console.log("Plex Style Cleanup Running")
+    var styleSheet = document.createElement("style");
+    styleSheet.innerText = getStyles();
+    document.body.appendChild(styleSheet);
+})();
 
 function getStyles() {
   return `
-    :root 
+    :root
     {
     --custom-highlight: red;
     --custom-buffer: rgba(255, 0, 0, 0.3);
     }
 
-    .react-chroma-dark 
+    .react-chroma-dark
     {
     --color-background-accent: var(--custom-highlight);
     --color-brand-accent: var(--custom-highlight);
@@ -42,7 +43,7 @@ function getStyles() {
     color: var(--custom-highlight);
     }
 
-    .SeekBar-seekBarFill-TestC_, 
+    .SeekBar-seekBarFill-TestC_,
     .VolumeSlider-fill-m0PeVk,
     .MetadataPosterCard-legacyUnwatchedTag-xCeVKK,
     .SourceSidebarLink-isSelected-rPGiHo::before,
@@ -60,8 +61,8 @@ function getStyles() {
     background-color: var(--custom-highlight)!important;
     }
 
-    .Spinner-medium-CSDGzv, 
-    .Spinner-spinner-XTaskc, 
+    .Spinner-medium-CSDGzv,
+    .Spinner-spinner-XTaskc,
     .spin-spin-H8VRGl
     {
     border-top-color: var(--custom-highlight)!important;
@@ -91,7 +92,7 @@ function getStyles() {
     fill: var(--custom-highlight);
     }
 
-    .SeekBar-seekBarBuffer-pao2Od 
+    .SeekBar-seekBarBuffer-pao2Od
     {
     background-color: var(--custom-buffer);
     }`;
