@@ -4,7 +4,7 @@
 // @version      0.4
 // @description  UX enhancements for MongoDB's Jira ticket view.
 // @author       Alexander Golin
-// @match        https://app.plex.tv/*
+// @match        https://jira.mongodb.org/browse/*
 // @icon         https://alexandergolin.com/img/logo.png
 // @grant        none
 // @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/ticket.js
