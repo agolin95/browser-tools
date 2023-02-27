@@ -7,8 +7,8 @@
 // @match        https://jira.mongodb.org/secure/RapidBoard.jspa*
 // @icon         https://alexandergolin.com/img/logo.png
 // @grant        none
-// @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
-// @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira_ux/board_and_backlog.js
+// @downloadURL  https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/board_and_backlog.js
+// @updateURL    https://raw.githubusercontent.com/agolin95/browser-tools/main/userscripts/jira/board_and_backlog.js
 // @require https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js 
 // ==/UserScript==
 
@@ -16,14 +16,14 @@
 (function () {
     'use strict';
     var onoff = "on"
-		console.log("Jira Board & Backlog Cleaner Starting Up!");
+    console.log("Jira Board & Backlog Cleaner Starting Up!");
     $("#ghx-modes-tools").prepend(`
 	<div id="toggle-extra-fields" class="custom-button aui-button">
 		<p>Toggle Extra Fields</p>
 	</div>
 	`)
     $("#toggle-extra-fields").click(function () {
-        if (onoff == "on"){
+        if (onoff == "on") {
             onoff = "off";
         }
         else if (onoff == "off") {
@@ -46,7 +46,7 @@ function cleanUpBacklog() {
 
 function cleanUpBoard() {
     $(".ghx-extra-fields").each(function () {
-       styleFields($(this));
+        styleFields($(this));
     });
 
     $(".ghx-type").each(function () {
@@ -59,13 +59,13 @@ function styleFields(fields) {
     let i = 0
     fields.find(".ghx-extra-field").each(function () {
         let field = $(this);
-      	let stripped = strip_mothra(field.text());
-      	field.text(stripped);
+        let stripped = strip_mothra(field.text());
+        field.text(stripped);
         if (field.text() == "None" || field.text() == "") {
             field.addClass("extra-field-hidden");
         } else {
-          	emptyFields = false;
-            field.addClass("extra-field-"+ i);
+            emptyFields = false;
+            field.addClass("extra-field-" + i);
         }
         i += 1;
     })
@@ -179,12 +179,12 @@ function addCSS() {
 }
 
 function strip_mothra(components) {
-  components = strip_substring(components, ", Mothra,");
-  components = strip_substring(components, ", Mothra");
-	components = strip_substring(components, "Mothra,");
-  components = strip_substring(components, "Mothra");
-  return components
-  
+    components = strip_substring(components, ", Mothra,");
+    components = strip_substring(components, ", Mothra");
+    components = strip_substring(components, "Mothra,");
+    components = strip_substring(components, "Mothra");
+    return components
+
 }
 
 function strip_substring(str, substr) {
