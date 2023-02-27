@@ -2,7 +2,7 @@ var url = window.location.href;
 var slash = url.lastIndexOf('/');
 var dash = url.lastIndexOf('-');
 var lang = url.substring(slash + 1, dash);
-var icon = "https://raw.githubusercontent.com/agolin95/browser-tools/main/icons/";
+var icon = "https://raw.githubusercontent.com/agolin95/browser-tools/main/icons/mongo/";
 
 switch (lang) {
     case "RUBY": icon += "ruby.png"; break;
@@ -24,7 +24,7 @@ switch (lang) {
     case "DRIVERS": icon += "dbx.png"; break;
 }
 
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     var favicon = document.querySelector('link[rel~="icon"]');
     var clone = favicon.cloneNode(!0);
     clone.href = icon;
