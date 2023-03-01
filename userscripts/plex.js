@@ -12,17 +12,18 @@
 // ==/UserScript==
 
 (function () {
-    'use strict';
-    console.log("Plex Style Cleanup Running")
-    var styleSheet = document.createElement("style");
-    styleSheet.innerText = getStyles();
-    document.body.appendChild(styleSheet);
+	'use strict';
+	console.log("Plex Style Cleanup Running")
+	var styleSheet = document.createElement("style");
+	styleSheet.innerText = getStyles();
+	document.body.appendChild(styleSheet);
 })();
 
 function getStyles() {
-    return `
+	return `
 		:root
 		{
+        --black: black;
 		--custom-highlight: red;
 		--custom-buffer: rgba(255, 0, 0, 0.3);
 		}
@@ -38,7 +39,10 @@ function getStyles() {
 
 		.TabButton-selected-wnNjlr,
 		.SourceSidebarLink-isSelected-rPGiHo .SourceSidebarLink-iconContainer-xQGX4C,
-		.SourceSidebarLink-isSelected-rPGiHo .SourceSidebarLink-title-C2NvGy
+		.SourceSidebarLink-isSelected-rPGiHo .SourceSidebarLink-title-C2NvGy,
+        .IconButton-isActive-SPVM7e,
+        .IconButton-isActive-SPVM7e:hover,
+        .Link-isSelected-x0P_By
 		{
 		color: var(--custom-highlight);
 		}
@@ -75,7 +79,8 @@ function getStyles() {
 		}
 
 		.PlayButton-playButton-vS1WII:hover .PlayButton-playCircle-fK1f_v,
-		.PlayPauseOverlay-playCircle-AOIb5b
+		.PlayPauseOverlay-playCircle-AOIb5b,
+        .DisclosureArrow-isSelected-GKTZnd
 		{
 		border-color: var(--custom-highlight);
 		}
@@ -96,5 +101,13 @@ function getStyles() {
 		{
 		background-color: var(--custom-buffer);
 		}
+
+        .FullPageBackground-backgroundContainer-mKhZ21 {
+            display: none;
+        }
+
+        html, .BottomBar-bottomBar-hnsKzI {
+            background: var(--black);
+        }
 	`;
 }
