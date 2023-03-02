@@ -64,7 +64,9 @@ function getStyles() {
         .container-2cd8Mz,
         .privateChannels-oVe7HL,
         .theme-dark .scroller-WSmht3,
-        .theme-dark .container-YkUktl{
+        .theme-dark .container-YkUktl,
+        .container-2o3qEW,
+        .member-48YF_l, .members-3WRCEx{
             background: var(--black);
         }
 
@@ -74,6 +76,18 @@ function getStyles() {
 
         .tamper-hidden {
             display: none;
+        }
+
+        :-moz-any(#content,#appcontent) browser{
+            margin-right:-14px!important;
+            overflow-y:scroll;
+            margin-bottom:-14px!important;
+            overflow-x:scroll;
+        }
+
+        .scroller-kQBbkU,
+        #channels {
+            scrollbar-width: none;
         }
 
 	`;
