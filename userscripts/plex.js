@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Plex Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.4
+// @version      0.5
 // @description  Visual Tweaks for Plex
 // @author       Alexander Golin
 // @match        https://app.plex.tv/*
