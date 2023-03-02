@@ -1,0 +1,36 @@
+.darker, .darker * {
+    scrollbar-width: none!important;
+}
+
+.darker .tr_content, 
+.darker .tv_content, 
+.darker .editor_border, 
+.darker .editor_outer, 
+.darker .curwaitmsg, 
+.darker .head_container, 
+.darker select, 
+.darker select:hover, 
+.darker input, 
+.darker input:hover, 
+.darker textarea, 
+.darker textarea:hover,
+.darker .tr_tabs:not(.tr_tabs_alt),
+html.darker, 
+html.darker .tv_contents, 
+html.darker .tv_tab,
+html.darker .tv_tab:hover,
+html.darker .tv_tab.tv_selected {
+    background: black!important;
+}
+
+.darker select {
+    background-image: none!important;
+}
+
+html.darker .tv_tab, html.darker .tv_tab.tv_selected, html.darker .tv_tab:hover {
+    box-shadow: none!important;
+}
+
+html.darker .tv_tab.tv_selected :not(.tv_tab_close) {
+    color: red!important;
+}
