@@ -2,23 +2,24 @@
     scrollbar-width: none!important;
 }
 
-html.darker, 
-html.darker .tv_contents, 
 .darker .tr_content, 
 .darker .tv_content, 
 .darker .editor_border, 
 .darker .editor_outer, 
 .darker .curwaitmsg, 
-.darker textarea, 
+.darker .head_container, 
 .darker select, 
-.darker .tr_tabs:not(.tr_tabs_alt), 
-.darker input, .darker .head_container, 
 .darker select:hover, 
+.darker input, 
 .darker input:hover, 
-.darker textarea:hover, 
-html.darker .tv_tab.tv_selected, 
-html.darker .tv_tab:hover, 
-html.darker .tv_tab {
+.darker textarea, 
+.darker textarea:hover,
+.darker .tr_tabs:not(.tr_tabs_alt),
+html.darker, 
+html.darker .tv_contents, 
+html.darker .tv_tab,
+html.darker .tv_tab:hover,
+html.darker .tv_tab.tv_selected {
     background: black!important;
 }
 
