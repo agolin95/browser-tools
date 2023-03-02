@@ -38,6 +38,12 @@ var $ = window.jQuery;
         }
     });
 
+    $(document).mouseleave(function () {
+        $(".wrapper-1_HaEi").each(function () {
+            $(this).addClass("tamper-hidden");
+        })
+    });
+
 
 })();
 
