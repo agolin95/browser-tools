@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Discord Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.1
+// @version      0.2
 // @description  Visual Tweaks for Discord
 // @author       Alexander Golin
 // @match        https://discord.com/*
@@ -72,7 +72,9 @@ function getStyles() {
         .theme-dark .scroller-WSmht3,
         .theme-dark .container-YkUktl,
         .container-2o3qEW,
-        .member-48YF_l, .members-3WRCEx{
+        .member-48YF_l, .members-3WRCEx,
+        .embedFull-1HGV2S
+        {
             background: var(--black);
         }
 
