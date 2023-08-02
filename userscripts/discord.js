@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Discord Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.2
+// @version      0.3
 // @description  Visual Tweaks for Discord
 // @author       Alexander Golin
 // @match        https://discord.com/*
@@ -25,14 +25,24 @@ var $ = window.jQuery;
         $(this).addClass("tamper-hidden");
     })
 
+    $(".sidebar-1tnWFu").each(function () {
+        $(this).addClass("tamper-hidden");
+    })
+
     $(document).on("mousemove", function (event) {
-        if (event.pageX <= 72) {
+        if (event.pageX <= 50) {
             $(".wrapper-1_HaEi").each(function () {
                 $(this).removeClass("tamper-hidden");
             })
+            $(".sidebar-1tnWFu").each(function () {
+                $(this).removeClass("tamper-hidden");
+            })
         }
-        else {
+        else if (event.pageX >= 400) {
             $(".wrapper-1_HaEi").each(function () {
+                $(this).addClass("tamper-hidden");
+            })
+            $(".sidebar-1tnWFu").each(function () {
                 $(this).addClass("tamper-hidden");
             })
         }
@@ -40,6 +50,9 @@ var $ = window.jQuery;
 
     $(document).mouseleave(function () {
         $(".wrapper-1_HaEi").each(function () {
+            $(this).addClass("tamper-hidden");
+        })
+        $(".sidebar-1tnWFu").each(function () {
             $(this).addClass("tamper-hidden");
         })
     });
