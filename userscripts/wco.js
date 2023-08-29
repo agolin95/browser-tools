@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         WCO Cleanup
 // @namespace    https://alexandergolin.com/
-// @version      0.2
+// @version      0.3
 // @description  Visual Tweaks for WCO
 // @author       Alexander Golin
 // @match        https://www.wcostream.org/*
@@ -78,7 +78,15 @@ function getStyles() {
         .topb > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1),
         .topb > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(1) > div:nth-child(1),
         .bh,
+        #iki-player-arasi,
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(6),
+        br,
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(5),
+        .lalyx,
         .alert,
+        #content>center,
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(7) > h2:nth-child(1),
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > div:nth-child(7) > a:nth-child(2),
         #cat-sharing,
         #cat-genre,
         #cat-playlist-butons,
@@ -93,11 +101,13 @@ function getStyles() {
         #b-report,
         .anti-ad,
         #footer,
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1),
         .searchboxtop > select:nth-child(1),
         .searchboxtop > input:nth-child(2),
         #content > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(3) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > img:nth-child(1),
         .message,
         #d-ackapa,
+        .reklam_pve,
         #sidebar > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(3) > td:nth-child(1) > img:nth-child(1),
         #div-3-2064453551,
         .topb > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1),
@@ -135,8 +145,10 @@ function getStyles() {
             border: none;
         }
 
-        #content > table:nth-child(5) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > a:nth-child(1)
-        {
+        #content > table:nth-child(5) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > a:nth-child(1),
+        #content > table:nth-child(3) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(1) > table:nth-child(2) > tbody:nth-child(1) > tr:nth-child(2) > td:nth-child(2) > a:nth-child(1)
+
+       {
             position: fixed;
             top: 15px;
             left: 70%;
